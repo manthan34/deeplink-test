@@ -18,7 +18,7 @@ class MainActivity: FlutterActivity() {
         return super.onCreateView(name, context, attrs)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+    /*override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
         Log.e("NST-M", "ON CREATE CALLED")
         val consent = intent.data?.getQueryParameter("consent")
@@ -58,11 +58,11 @@ class MainActivity: FlutterActivity() {
             "error" to error,
             "error-description" to errorDescription)
         DeepLinkManager.handleDeeplink(data)
-    }
+    }*/
 
     override fun configureFlutterEngine(@NonNull flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
-        DeepLinkManager.configureChannel(flutterEngine)
+//        DeepLinkManager.configureChannel(flutterEngine)
     }
 
 }

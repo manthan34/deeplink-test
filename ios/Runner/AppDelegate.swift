@@ -23,7 +23,7 @@ import Flutter
   }
     
     
-    override func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    /*override func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if url.scheme == "nstsaas" {
             guard let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true),
                 let params = components.queryItems else {
@@ -39,6 +39,6 @@ import Flutter
             deeplinkManager?.methodChannel.invokeMethod("handleDeeplinkData", arguments: data)
         }
         return super.application(app, open: url, options: [:])
-    }
+    }*/
     
 }

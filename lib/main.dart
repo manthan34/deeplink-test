@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
-  DeeplinkManager.instance.configureChannel();
+  //DeeplinkManager.instance.configureChannel();
 }
 
 class MyApp extends StatelessWidget {
@@ -20,8 +20,24 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomePage(),
-      routes: Routes.routes,
+      //home: HomePage(),
+      onGenerateRoute: (settings) {
+        if (settings.name != null) {
+          var uri = Uri.parse(settings.name!);
+          uri.queryParameters.forEach((key, value) {
+            kdPrint("Key: $key\tValue: $value");
+          });
+          if (settings.name! == "/") {
+            return MaterialPageRoute(builder: (_) => HomePage());
+          } else if (settings.name! == "/settings") {
+            return MaterialPageRoute(builder: (_) => SettingsPage());
+          } else {
+            return null;
+          }
+        } else {
+          kdPrint("Route name is null");
+        }
+      },
       restorationScopeId: "nst-saas-root",
     );
   }
@@ -76,4 +92,8 @@ class Routes {
     settings: (BuildContext context) => const SettingsPage(),
   };
 
+}
+
+void kdPrint(String value) {
+  debugPrint("\n======================================== $value ========================================\n");
 }
